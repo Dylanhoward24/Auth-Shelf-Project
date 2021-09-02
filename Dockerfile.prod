@@ -1,0 +1,42 @@
+#############################################
+# BASE PRODUCTION DOCKERFILE SETTINGS
+#
+# ----------------------------------------
+# Deployment Steps for Docker to Heroku
+# - must have created a heroku account
+# - the following commands should be run
+#   in the terminal at the root of the
+#   project
+# ----------------------------------------
+#
+# heroku login
+# heroku create app-name-optional
+# heroku stack:set container
+# heroku addons:create heroku-postgresql:hobby-dev
+#
+# git push heroku master
+#
+#############################################
+
+# Base image we are modifying from https://hub.docker.com/
+FROM node:14.15.4-alpine3.10
+
+# Creating App Directory
+RUN mkdir -p /app
+WORKDIR /app
+
+#############################################
+# COPY DEPENDENCIES TO CONTAINER BE & FE
+#############################################
+
+COPY package.json /app
+
+# install and cache server dependencies
+RUN npm install
+COPY . /app
+
+COPY ./build /app/build
+RUN npm run build
+
+# Run final command to kick off server
+CMD ["npm", "run", "start"]
