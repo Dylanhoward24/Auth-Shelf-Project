@@ -1,0 +1,58 @@
+{
+  "name": "prime-solo-project",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^2.0.0-rc.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "--------------------     Deployment    --------------------": "",
+    "start": "node server/server.js",
+    "-------------------- React Client-Side --------------------": "",
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "--------------------   TS for Server   --------------------": "",
+    "server": "nodemon -e ts --ignore './dist' -x npm run server:ts",
+    "server:ts": "tsc -p tsconfig.node.json && node dist/server.js",
+    "tsc": "tsc -p tsconfig.node.json"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/body-parser": "^1.19.0",
+    "@types/cookie-session": "^2.0.42",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.22",
+    "@types/passport": "^1.0.5",
+    "@types/passport-local": "^1.0.33",
+    "@types/pg": "^7.14.9",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.1.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "heroku-run-build-script": true
+}
