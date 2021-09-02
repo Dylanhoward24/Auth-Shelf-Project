@@ -1,0 +1,16 @@
+# Base image we are modifying from https://hub.docker.com/
+FROM node:14.15.4-alpine3.10
+
+# Creating App Directory
+RUN mkdir -p /app-server
+WORKDIR /app-server
+
+COPY package.json /app-server
+
+RUN npm install
+
+COPY ./server /app-server/server
+COPY ./public /app-server/public
+
+# Run final command to kick off server
+CMD ["npm", "run", "server"]
