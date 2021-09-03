@@ -1,7 +1,10 @@
+import axios from 'axios';
 import React from 'react';
 import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import AddShelfItem from '../AddShelfItem/AddShelfItem';
+import ShelfItem from '../ShelfItem/ShelfItem';
+
 
 function ShelfPage() {
   //Set up dispatch 
@@ -20,22 +23,23 @@ function ShelfPage() {
       type: 'FETCH_SHELF'
     });
   }
+ 
 
   return (
     <div className="container">
       <h2>Shelf</h2>
 
       {/* form to add another item to shelf */}
-      <AddShelfItem />
+      <AddShelfItem 
+
+      />
 
       <ul>
         {shelf.map((item, i) => (
           <div key={i}>
-            <li>
-              <p>{item.username}</p>
-              <p>{item.description}</p>
-              <img src={item.image_url}/>
-            </li>
+            <ShelfItem
+              item={item}
+              /> 
           </div>
         ))}
       </ul>
