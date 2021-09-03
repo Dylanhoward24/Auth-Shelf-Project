@@ -1,6 +1,8 @@
 import React from 'react';
 import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
+import AddShelfItem from '../AddShelfItem/AddShelfItem';
+
 function ShelfPage() {
   //Set up dispatch 
   const dispatch = useDispatch();
@@ -22,7 +24,9 @@ function ShelfPage() {
   return (
     <div className="container">
       <h2>Shelf</h2>
-      <p>All of the available items can be seen here.</p>
+
+      {/* form to add another item to shelf */}
+      <AddShelfItem />
 
       <ul>
         {shelf.map((item, i) => (

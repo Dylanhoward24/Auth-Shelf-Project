@@ -2,7 +2,7 @@ import axios from "axios"
 import {put, takeLatest} from "redux-saga/effects";
 
 export default function* shelfSaga(){
-    yield takeLatest('FETCH_SHELF', fetchShelfList)
+    yield takeLatest('FETCH_SHELF', fetchShelfList);
 }
 
 function* fetchShelfList(){
@@ -14,4 +14,3 @@ function* fetchShelfList(){
         payload: res.data
     });
 }
-
