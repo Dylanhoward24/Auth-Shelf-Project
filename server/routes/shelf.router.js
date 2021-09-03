@@ -7,8 +7,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware')
  * Get all of the items on the shelf
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
-  res.sendStatus(200); // For testing only, can be removed'
-
+  // res.sendStatus(200); // For testing only, can be removed'
 
   if (!req.user){
     res.sendStatus(401)
@@ -16,9 +15,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   }
   let queryText = `
     SELECT * FROM "item"
+    JOIN "user"
+      ON "user"."id" = "item"."user_id"
   `;
   pool.query(queryText)
     .then((result) => {
+      console.log('result is', result);
+      
       res.send(result.rows);
     })
     .catch((error) => {
